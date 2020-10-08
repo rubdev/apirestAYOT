@@ -3,6 +3,10 @@ package com.dev.ruben.apirestayot.entity;
 import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * Entidad de la tabla comercio
+ * @author Rubén
+ */
 @Table(name = "comercio")
 @Entity
 public class Comercio {
@@ -40,6 +44,10 @@ public class Comercio {
         this.direccion = direccion;
         this.telefono = telefono;
     }
+
+    /**
+     * Getters y setters
+     */
 
     public int getId() {
         return id;

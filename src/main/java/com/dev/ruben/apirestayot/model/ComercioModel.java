@@ -4,6 +4,10 @@ import com.dev.ruben.apirestayot.entity.Comercio;
 
 import java.util.Objects;
 
+/**
+ * Modelo de la entidad Comercio
+ * @author Rubén
+ */
 public class ComercioModel {
 
     private int id;
@@ -44,6 +48,10 @@ public class ComercioModel {
         this.direccion = comercio.getDireccion();
         this.telefono = comercio.getTelefono();
     }
+
+    /**
+     * Getters y setters
+     */
 
     public int getId() {
         return id;
@@ -86,7 +94,7 @@ public class ComercioModel {
     }
 
     /**
-     * Equals method
+     * equals method
      * @param o
      * @return
      */
