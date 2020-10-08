@@ -11,7 +11,7 @@ import java.util.List;
  * Repositorio de querys para la entidad Comercio
  * @author Rubén
  */
-@Repository
+@Repository("comercioRepository")
 public interface ComercioRepository extends JpaRepository<Comercio, Serializable> {
     /**
      * Buscar por id de comercio
