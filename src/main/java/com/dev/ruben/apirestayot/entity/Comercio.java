@@ -1,6 +1,7 @@
 package com.dev.ruben.apirestayot.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -9,19 +10,19 @@ import java.util.Objects;
  */
 @Table(name = "comercio")
 @Entity
-public class Comercio {
+public class Comercio implements Serializable {
 
     @GeneratedValue
     @Id
-    @Column(name = "id", length = 10)
+    @Column(name = "ID", length = 10)
     private int id;
-    @Column(name = "nombre", length = 50)
+    @Column(name = "NOMBRE", length = 50)
     private String nombre;
-    @Column(name = "descripcion", length = 200)
+    @Column(name = "DESCRIPCION", length = 200)
     private String descripcion;
-    @Column(name = "direccion", length = 50)
+    @Column(name = "DIRECCION", length = 50)
     private String direccion;
-    @Column(name = "telefono", length = 9)
+    @Column(name = "TELEFONO", length = 9)
     private String telefono;
 
     /**
