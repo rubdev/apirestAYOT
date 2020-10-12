@@ -34,6 +34,7 @@ public class ComercioServiceImpl implements ComercioService {
     @Override
     public boolean crear(Comercio comercio) {
         try {
+            comercioRepository.save(comercio);
             return true;
         } catch (Exception e) {
             return false;
@@ -48,6 +49,12 @@ public class ComercioServiceImpl implements ComercioService {
     @Override
     public boolean actualizar(Comercio comercio) {
         try {
+            if (comercio.getId() != 0) {
+                // actualizar
+            } else {
+                // crear
+                comercioRepository.save(comercio);
+            }
             return true;
         } catch (Exception e) {
             return false;
@@ -63,6 +70,12 @@ public class ComercioServiceImpl implements ComercioService {
     @Override
     public boolean eliminar(String nombre, int id) {
         try {
+            List<Comercio> listaComercios = comercioRepository.findByNombreAndId(nombre, id);
+            Comercio comercio;
+            if (listaComercios.get(0) != null) {
+                comercio = listaComercios.get(0);
+                comercioRepository.delete(comercio);
+            }
             return true;
         } catch (Exception e) {
             return false;
@@ -75,7 +88,15 @@ public class ComercioServiceImpl implements ComercioService {
      */
     @Override
     public List<ComercioModel> consultar() {
-        List<ComercioModel> listaComerciosModel = new ArrayList<>();
-        return listaComerciosModel;
+        return comercioConverter.convertComercio(comercioRepository.findAll());
+    }
+
+    /**
+     * Devuelve un listado de Comercios filtrados por nombre
+     * @return
+     */
+    @Override
+    public List<ComercioModel> consultarPorNombre(String nombre) {
+        return comercioConverter.convertComercio(comercioRepository.findByNombre(nombre));
     }
 }

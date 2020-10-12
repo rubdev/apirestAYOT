@@ -14,4 +14,5 @@ public interface ComercioService {
     public boolean actualizar(Comercio comercio);
     public boolean eliminar(String nombre, int id);
     public List<ComercioModel> consultar();
+    public List<ComercioModel> consultarPorNombre(String nombre);
 }

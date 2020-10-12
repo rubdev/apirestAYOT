@@ -26,4 +26,12 @@ public interface ComercioRepository extends JpaRepository<Comercio, Serializable
      * @return
      */
     public abstract List<Comercio> findByNombre(String nombre);
+
+    /**
+     * Buscar por nombre y id
+     * @param nombre
+     * @param id
+     * @return
+     */
+    public abstract  List<Comercio> findByNombreAndId(String nombre, int id);
 }
