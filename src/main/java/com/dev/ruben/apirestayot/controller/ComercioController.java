@@ -1,8 +1,11 @@
 package com.dev.ruben.apirestayot.controller;
 
+import com.dev.ruben.apirestayot.converter.ComercioConverter;
 import com.dev.ruben.apirestayot.entity.Comercio;
 import com.dev.ruben.apirestayot.model.ComercioModel;
 import com.dev.ruben.apirestayot.service.ComercioServiceImpl;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.annotation.Validated;
@@ -18,6 +21,8 @@ import java.util.List;
 @RequestMapping("/comercio")
 public class ComercioController {
 
+    private static final Log log = LogFactory.getLog(ComercioConverter.class);
+
     @Autowired
     @Qualifier("comercioService")
     ComercioServiceImpl comercioService;
@@ -29,6 +34,7 @@ public class ComercioController {
      */
     @PostMapping("/nuevo")
     public boolean nuevoComercio(@RequestBody @Validated Comercio comercio) {
+        log.info("Controller llama al servicio para guardar un nuevo Comercio");
         return comercioService.crear(comercio);
     }
 
@@ -39,6 +45,7 @@ public class ComercioController {
      */
     @PutMapping("/modificar")
     public boolean modificarComercio(@RequestBody @Validated Comercio comercio) {
+        log.info("Controller llama al servicio para modificar un Comercio");
         return comercioService.actualizar(comercio);
     }
 
@@ -51,6 +58,7 @@ public class ComercioController {
     @DeleteMapping("/eliminar/{id}/{nombre}")
     public boolean borrarComercio(@PathVariable("id") int id,
                                   @PathVariable("nombre") String nombre) {
+        log.info("Controller llama al servicio para eliminar un Comercio");
         return comercioService.eliminar(nombre, id);
     }
 
@@ -60,6 +68,7 @@ public class ComercioController {
      */
     @GetMapping("obtenerTodos")
     public List<ComercioModel> obtenerTodosComercios() {
+        log.info("Controller llama al servicio para listar todos los Comercios");
         return comercioService.consultar();
     }
 
