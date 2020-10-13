@@ -12,7 +12,7 @@ import java.util.Objects;
 @Entity
 public class Comercio implements Serializable {
 
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID", length = 10)
     private int id;

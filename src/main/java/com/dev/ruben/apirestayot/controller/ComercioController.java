@@ -29,10 +29,11 @@ public class ComercioController {
 
     /**
      * Método encargado de llamar al servicio y hacer la llamada a guardar nuevo Comercio
+     * Estará en la ruta -> http://localhost:3000/comercio/guardar
      * @param comercio
      * @return
      */
-    @PostMapping("/nuevo")
+    @PostMapping("/guardar")
     public boolean nuevoComercio(@RequestBody @Validated Comercio comercio) {
         log.info("Controller llama al servicio para guardar un nuevo Comercio");
         return comercioService.crear(comercio);
@@ -66,7 +67,7 @@ public class ComercioController {
      * Método encargado de llamar al servicio para obtener todos los registros de Comercio
      * @return
      */
-    @GetMapping("obtenerTodos")
+    @GetMapping("/getComercios")
     public List<ComercioModel> obtenerTodosComercios() {
         log.info("Controller llama al servicio para listar todos los Comercios");
         return comercioService.consultar();
